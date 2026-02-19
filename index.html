@@ -12,19 +12,19 @@
     <style>
         /* ===== ПЕРЕМЕННЫЕ И БАЗОВЫЕ СТИЛИ ===== */
         :root {
-            --primary-color: #8b5cf6;
-            --primary-light: #c4b5fd;
+            --primary-color: #e8b4b4;
+            --primary-dark: #c28b8b;
             --bg-color: #ffffff;
-            --bg-color-dark: #0f172a;
-            --card-bg: #f8fafc;
-            --card-bg-dark: #1e293b;
-            --text-color: #1e293b;
-            --text-color-dark: #f1f5f9;
-            --text-light: #64748b;
-            --border-color: #e2e8f0;
-            --border-color-dark: #334155;
-            --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            --radius: 12px;
+            --bg-color-dark: #1a1a1a;
+            --card-bg: #fcf9f7;
+            --card-bg-dark: #2a2a2a;
+            --text-color: #2d2d2d;
+            --text-color-dark: #f5f5f5;
+            --text-light: #666666;
+            --border-color: #f0e4e0;
+            --border-color-dark: #404040;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --radius: 20px;
         }
         
         * {
@@ -46,40 +46,38 @@
             --bg-color: var(--bg-color-dark);
             --card-bg: var(--card-bg-dark);
             --text-color: var(--text-color-dark);
-            --text-light: #cbd5e1;
+            --text-light: #bbbbbb;
             --border-color: var(--border-color-dark);
         }
         
         .container {
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 20px;
         }
         
         /* ===== ШАПКА ===== */
         .header {
             text-align: center;
-            padding: 40px 0 30px;
-            border-bottom: 2px solid var(--border-color);
-            margin-bottom: 40px;
+            padding: 30px 0 20px;
+            margin-bottom: 30px;
         }
         
         .logo {
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .logo-icon {
-            background: linear-gradient(135deg, var(--primary-color), #7c3aed);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             width: 60px;
             height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
         }
         
         .logo-icon i {
@@ -89,77 +87,25 @@
         
         .logo-text {
             font-size: 32px;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), #7c3aed);
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-dark), #a57878);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        .app-description {
+        .last-updated {
             color: var(--text-light);
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
-        
-        /* ===== ПЕРЕКЛЮЧАТЕЛЬ СТРАНИЦ ===== */
-        .page-switcher {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .page-btn {
-            padding: 14px 28px;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: var(--radius);
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--text-color);
-            cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 15px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 5px;
         }
         
-        .page-btn:hover {
-            border-color: var(--primary-light);
-            transform: translateY(-2px);
-        }
-        
-        .page-btn.active {
-            background: linear-gradient(135deg, var(--primary-color), #7c3aed);
-            color: white;
-            border-color: var(--primary-color);
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.2);
-        }
-        
-        .page-btn i {
-            font-size: 18px;
-        }
-        
-        /* ===== СТРАНИЦЫ ===== */
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* ===== СТИЛИ ДОКУМЕНТОВ ===== */
-        .document {
+        /* ===== ОСНОВНОЙ ДОКУМЕНТ ===== */
+        .privacy-card {
             background: var(--card-bg);
             border-radius: var(--radius);
             padding: 40px;
@@ -167,46 +113,29 @@
             border: 1px solid var(--border-color);
         }
         
-        .doc-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 25px;
+        .doc-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-bottom: 15px;
             border-bottom: 2px solid var(--border-color);
-        }
-        
-        .doc-header h1 {
-            font-size: 32px;
-            margin-bottom: 10px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-        
-        .doc-header h1 i {
-            color: var(--primary-color);
-        }
-        
-        .doc-meta {
-            color: var(--text-light);
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 10px;
-            margin-top: 15px;
         }
         
-        .doc-meta i {
-            font-size: 14px;
+        .doc-title i {
+            font-size: 28px;
         }
         
-        .doc-section {
+        .section {
             margin-bottom: 35px;
         }
         
-        .doc-section h2 {
-            font-size: 22px;
+        .section h2 {
+            font-size: 20px;
+            font-weight: 600;
             margin-bottom: 15px;
             color: var(--text-color);
             display: flex;
@@ -214,193 +143,111 @@
             gap: 10px;
         }
         
-        .doc-section h2 i {
+        .section h2 i {
             color: var(--primary-color);
-            font-size: 20px;
+            font-size: 18px;
         }
         
-        .doc-section p {
+        .section p {
             margin-bottom: 15px;
-            font-size: 16px;
+            font-size: 15px;
+            color: var(--text-light);
         }
         
-        .highlight {
-            background: rgba(139, 92, 246, 0.1);
-            padding: 20px;
-            border-radius: 8px;
+        .section ul, .section ol {
+            margin: 10px 0 15px 25px;
+            color: var(--text-light);
+        }
+        
+        .section li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .section li strong {
+            color: var(--text-color);
+        }
+        
+        .highlight-box {
+            background: rgba(232, 180, 180, 0.1);
             border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
             margin: 20px 0;
         }
         
-        .highlight strong {
-            color: var(--primary-color);
+        .highlight-box p {
+            margin-bottom: 0;
         }
         
-        ul.legal-list {
+        .data-list {
             list-style: none;
-            padding-left: 0;
+            margin-left: 0 !important;
         }
         
-        ul.legal-list li {
-            margin-bottom: 12px;
-            padding-left: 30px;
+        .data-list li {
+            padding-left: 25px;
             position: relative;
         }
         
-        ul.legal-list li:before {
+        .data-list li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            top: 0;
-            color: var(--primary-color);
+            color: var(--primary-dark);
             font-weight: bold;
-            font-size: 16px;
         }
         
-        .notice-box {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(124, 58, 237, 0.05));
-            border-radius: 10px;
-            padding: 20px;
-            margin: 30px 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            border: 1px solid var(--border-color);
-        }
-        
-        .notice-box i {
-            color: var(--primary-color);
-            font-size: 22px;
-            margin-top: 2px;
-        }
-        
-        .contact-info {
-            background: var(--card-bg);
-            border-radius: 10px;
+        .contact-block {
+            background: linear-gradient(135deg, rgba(232, 180, 180, 0.1), rgba(194, 139, 139, 0.05));
+            border-radius: 15px;
             padding: 25px;
             margin-top: 30px;
-            border: 2px dashed var(--border-color);
             text-align: center;
+            border: 1px dashed var(--primary-color);
         }
         
-        .contact-info h3 {
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        
-        .email {
+        .contact-block h3 {
             font-size: 18px;
-            font-weight: 600;
-            color: var(--primary-color);
-            background: rgba(139, 92, 246, 0.1);
-            padding: 12px 24px;
-            border-radius: 8px;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        .contact-email {
             display: inline-block;
-            margin-top: 10px;
+            background: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--primary-dark);
+            font-weight: 500;
+            margin-top: 15px;
+            border: 1px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
         
-        .acceptance-box {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 30px;
-            margin-top: 40px;
-            text-align: center;
-            border: 2px solid var(--border-color);
-        }
-        
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-        
-        .checkbox-container input {
-            width: 22px;
-            height: 22px;
-            cursor: pointer;
-        }
-        
-        .checkbox-container label {
-            font-size: 16px;
-            cursor: pointer;
-        }
-        
-        .accept-btn {
-            background: linear-gradient(135deg, var(--primary-color), #7c3aed);
-            color: white;
-            border: none;
-            padding: 16px 40px;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
-        }
-        
-        .accept-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
-        }
-        
-        .accept-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
+        .contact-email i {
+            margin-right: 8px;
+            color: var(--primary-color);
         }
         
         /* ===== ПОДВАЛ ===== */
         .footer {
             text-align: center;
-            padding: 40px 0 20px;
-            margin-top: 50px;
+            padding: 30px 0 20px;
+            margin-top: 30px;
+            color: var(--text-light);
+            font-size: 14px;
             border-top: 1px solid var(--border-color);
-            color: var(--text-light);
-            font-size: 15px;
         }
         
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .footer-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-links a:hover {
-            color: var(--primary-color);
-        }
-        
-        .footer-links a i {
-            font-size: 14px;
-        }
-        
-        .copyright {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-        
-        /* ===== ТЕМА ===== */
+        /* ===== ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== */
         .theme-toggle {
             position: fixed;
-            top: 25px;
+            bottom: 25px;
             right: 25px;
             background: var(--card-bg);
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -417,14 +264,18 @@
         }
         
         .theme-toggle i {
-            font-size: 22px;
+            font-size: 20px;
             color: var(--text-color);
         }
         
         /* ===== АДАПТИВНОСТЬ ===== */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
+            .privacy-card {
+                padding: 25px;
+            }
+            
+            .doc-title {
+                font-size: 24px;
             }
             
             .logo-text {
@@ -435,49 +286,19 @@
                 width: 50px;
                 height: 50px;
             }
-            
-            .page-btn {
-                padding: 12px 20px;
-                font-size: 15px;
-            }
-            
-            .document {
-                padding: 25px;
-            }
-            
-            .doc-header h1 {
-                font-size: 26px;
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .doc-section h2 {
-                font-size: 20px;
-            }
-            
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
-                width: 50px;
-                height: 50px;
-            }
         }
         
         @media (max-width: 480px) {
-            .page-switcher {
-                flex-direction: column;
-                align-items: center;
+            .container {
+                padding: 15px;
             }
             
-            .page-btn {
-                width: 100%;
-                max-width: 300px;
-                justify-content: center;
+            .privacy-card {
+                padding: 20px;
             }
             
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
+            .section h2 {
+                font-size: 18px;
             }
         }
     </style>
@@ -497,241 +318,201 @@
                 </div>
                 <h1 class="logo-text">Hair Colorist</h1>
             </div>
-            <p class="app-description">
-                Приложение для виртуального окрашивания волос с использованием искусственного интеллекта
-            </p>
-            
-            <!-- Переключатель страниц -->
-            <div class="page-switcher">
-                <button class="page-btn active" id="btn-privacy">
-                    <i class="fas fa-shield-alt"></i>
-                    Политика конфиденциальности
-                </button>
-                <button class="page-btn" id="btn-license">
-                    <i class="fas fa-file-contract"></i>
-                    Лицензионное соглашение
-                </button>
+            <div class="last-updated">
+                <i class="far fa-calendar-alt"></i>
+                <span>Дата последнего обновления: <span id="current-date">19 февраля 2026 г.</span></span>
             </div>
         </header>
         
-        <!-- Страница политики конфиденциальности -->
-        <section id="privacy-page" class="page active">
-            <div class="document">
-                <div class="doc-header">
-                    <h1>
-                        <i class="fas fa-shield-alt"></i>
-                        Политика конфиденциальности
-                    </h1>
-                    <div class="doc-meta">
-                        <i class="far fa-calendar-alt"></i>
-                        <span id="current-date">26 января 2026 г.</span>
+        <!-- Основной контент - Политика конфиденциальности -->
+        <main class="privacy-card">
+            <h1 class="doc-title">
+                <i class="fas fa-shield-alt"></i>
+                ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
+            </h1>
+            
+            <!-- 1. ОБЩИЕ ПОЛОЖЕНИЯ -->
+            <section class="section">
+                <h2><i class="fas fa-info-circle"></i> 1. ОБЩИЕ ПОЛОЖЕНИЯ</h2>
+                <p>1.1. Настоящая Политика конфиденциальности («Политика») определяет порядок обработки и защиты персональных данных пользователей мобильного приложения «Hair Colorist» («Приложение»), разработанного Чиграковой Анастасией Сергеевной («Оператор»).</p>
+                <p>1.2. Оператор обязуется соблюдать конфиденциальность персональных данных Пользователя в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+                <p>1.3. Используя Приложение, Пользователь выражает своё согласие с условиями настоящей Политики.</p>
+            </section>
+            
+            <!-- 2. КАКИЕ ДАННЫЕ МЫ СОБИРАЕМ -->
+            <section class="section">
+                <h2><i class="fas fa-database"></i> 2. КАКИЕ ДАННЫЕ МЫ СОБИРАЕМ</h2>
+                <p>2.1. Приложение «Hair Colorist» разработано с минимальным сбором данных. Мы собираем только ту информацию, которая необходима для функционирования Приложения:</p>
+                
+                <ul class="data-list">
+                    <li><strong>Технические данные устройства:</strong>
+                        <ul style="margin-top: 5px; margin-left: 20px;">
+                            <li>Тип и версия операционной системы</li>
+                            <li>Модель устройства</li>
+                            <li>Уникальный идентификатор устройства (IDFA/Android ID/AAID)</li>
+                            <li>Версия Приложения</li>
+                            <li>Язык и регион устройства</li>
+                        </ul>
+                    </li>
+                    <li style="margin-top: 15px;"><strong>Данные, вводимые пользователем для расчётов:</strong>
+                        <ul style="margin-top: 5px; margin-left: 20px;">
+                            <li>Тип волос (натуральные, окрашенные, седые и т.д.)</li>
+                            <li>Текущий и желаемый цвет волос</li>
+                            <li>Длина волос</li>
+                            <li>Процент седины</li>
+                            <li>Выбранный бренд краски (ESTEL, IGORA, MATRIX, KAPOUS и др.)</li>
+                            <li>Количество продукта (если указано)</li>
+                        </ul>
+                    </li>
+                    <li style="margin-top: 15px;"><strong>Данные об использовании (аналитика и реклама):</strong>
+                        <ul style="margin-top: 5px; margin-left: 20px;">
+                            <li>Частота использования различных функций</li>
+                            <li>Продолжительность сессий</li>
+                            <li>Информация об ошибках и сбоях (логи)</li>
+                            <li>Данные для таргетированной рекламы (без персональной идентификации)</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <div class="highlight-box">
+                    <p><strong>2.2. Приложение НЕ собирает и НЕ передаёт:</strong> Фотографии и изображения пользователей, геолокационные данные, контактную информацию, данные платёжных карт, данные из адресной книги или социальных сетей (за исключением случаев добровольной авторизации через ВКонтакте).</p>
+                </div>
+            </section>
+            
+            <!-- 3. ЦЕЛИ СБОРА ДАННЫХ -->
+            <section class="section">
+                <h2><i class="fas fa-bullseye"></i> 3. ЦЕЛИ СБОРА ДАННЫХ</h2>
+                <p>3.1. Собранные данные используются исключительно для следующих целей:</p>
+                <ul>
+                    <li>Обеспечения корректной работы Приложения и выполнения расчётов;</li>
+                    <li>Улучшения функциональности и пользовательского опыта;</li>
+                    <li>Анализа использования Приложения через сервисы аналитики;</li>
+                    <li>Показа релевантной рекламы для монетизации бесплатной версии;</li>
+                    <li>Выявления и устранения ошибок, технических проблем;</li>
+                    <li>Соблюдения требований действующего законодательства РФ.</li>
+                </ul>
+            </section>
+            
+            <!-- 4. ОБРАБОТКА И ХРАНЕНИЕ ДАННЫХ -->
+            <section class="section">
+                <h2><i class="fas fa-server"></i> 4. ОБРАБОТКА И ХРАНЕНИЕ ДАННЫХ</h2>
+                <p>4.1. Все расчёты производятся локально на устройстве Пользователя. Введённые данные для расчётов не передаются на серверы Оператора и не покидают устройство.</p>
+                <p>4.2. Для сбора аналитики и показа рекламы могут использоваться сторонние сервисы:</p>
+                <ul>
+                    <li>Яндекс.Метрика — для анализа использования Приложения;</li>
+                    <li>ВКонтакте (VK SDK) — для авторизации по желанию пользователя и аналитики;</li>
+                    <li>Huawei Mobile Services (HMS Core) — для устройств без сервисов Google, включая Huawei Ads Kit, Huawei Analytics Kit, Huawei In-App Purchases;</li>
+                    <li>Данные рекламных сетей — в соответствии с политиками соответствующих платформ.</li>
+                </ul>
+                <p>4.4. Оператор принимает необходимые организационные и технические меры для защиты данных от неправомерного доступа, уничтожения, изменения, блокирования, копирования и распространения.</p>
+            </section>
+            
+            <!-- 5. ПЕРЕДАЧА ДАННЫХ ТРЕТЬИМ ЛИЦАМ -->
+            <section class="section">
+                <h2><i class="fas fa-share-alt"></i> 5. ПЕРЕДАЧА ДАННЫХ ТРЕТЬИМ ЛИЦАМ</h2>
+                <p>5.1. Оператор не продаёт, не обменивает и не передаёт персональные данные Пользователей третьим лицам, за исключением:</p>
+                <ul>
+                    <li>Указанных в п. 4.2 сервисов аналитики и рекламы;</li>
+                    <li>Уполномоченных государственных органов по их законному требованию;</li>
+                    <li>Правопреемников в случае реорганизации или продажи бизнеса (с обязательным уведомлением пользователей).</li>
+                </ul>
+                <p>5.2. Все третьи лица, получающие данные, обязуются соблюдать конфиденциальность. Передаваемые данные используются исключительно в целях, указанных в настоящей Политике.</p>
+                <p>5.3. Рекламные сети могут использовать данные для таргетирования рекламы, но не получают прямую персональную идентификацию (имя, email, телефон).</p>
+            </section>
+            
+            <!-- 6. ПРАВА ПОЛЬЗОВАТЕЛЯ -->
+            <section class="section">
+                <h2><i class="fas fa-user-check"></i> 6. ПРАВА ПОЛЬЗОВАТЕЛЯ</h2>
+                <p>6.1. В соответствии с законодательством РФ Пользователь имеет право:</p>
+                <ul>
+                    <li>На получение информации о наличии и содержании своих персональных данных;</li>
+                    <li>На уточнение, блокирование или уничтожение своих данных, если они неполные, устаревшие, недостоверные или незаконно обработаны;</li>
+                    <li>На отзыв согласия на обработку персональных данных;</li>
+                    <li>На защиту своих прав и законных интересов, в том числе в судебном порядке.</li>
+                </ul>
+                <p>6.2. Для реализации своих прав Пользователь может обратиться к Оператору: meledy11@yandex.ru</p>
+            </section>
+            
+            <!-- 7. ИСПОЛЬЗОВАНИЕ СЕРВИСОВ ТРЕТЬИХ ЛИЦ -->
+            <section class="section">
+                <h2><i class="fas fa-plug"></i> 7. ИСПОЛЬЗОВАНИЕ СЕРВИСОВ ТРЕТЬИХ ЛИЦ</h2>
+                <p>7.1. Приложение интегрирует следующие сервисы третьих лиц:</p>
+                <ul>
+                    <li>Яндекс.Метрика (аналитика)</li>
+                    <li>ВКонтакте (авторизация и аналитика)</li>
+                    <li>Huawei Ads Kit (реклама для устройств Huawei)</li>
+                    <li>Другие рекламные сети (включая китайские платформы) для устройств.</li>
+                </ul>
+                <p>7.2. Использование этих сервисов регулируется их собственными политиками конфиденциальности. Оператор не несёт ответственности за политики конфиденциальности и практики сторонних сервисов.</p>
+            </section>
+            
+            <!-- 8. ДЕТИ -->
+            <section class="section">
+                <h2><i class="fas fa-child"></i> 8. ДЕТИ</h2>
+                <p>Приложение не предназначено для детей младше 16 лет. Мы сознательно не собираем персональные данные детей.</p>
+            </section>
+            
+            <!-- 9. ИЗМЕНЕНИЯ В ПОЛИТИКЕ -->
+            <section class="section">
+                <h2><i class="fas fa-edit"></i> 9. ИЗМЕНЕНИЯ В ПОЛИТИКЕ КОНФИДЕНЦИАЛЬНОСТИ</h2>
+                <p>9.1. Оператор оставляет за собой право вносить изменения в настоящую Политику. Новая редакция вступает в силу с момента её размещения в Приложении.</p>
+                <p>9.2. Продолжая использовать Приложение после внесения изменений, Пользователь подтверждает своё согласие с новой редакцией Политики.</p>
+            </section>
+            
+            <!-- 10. КОНТАКТНАЯ ИНФОРМАЦИЯ -->
+            <section class="section">
+                <h2><i class="fas fa-address-card"></i> 10. КОНТАКТНАЯ ИНФОРМАЦИЯ</h2>
+                <p>10.1. По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться к Оператору:</p>
+                
+                <div class="contact-block">
+                    <h3><i class="fas fa-envelope"></i> Контакты для связи</h3>
+                    <div class="contact-email">
+                        <i class="far fa-envelope"></i>
+                        meledy11@yandex.ru
                     </div>
                 </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-info-circle"></i> 1. Общие положения</h2>
-                    <p>Настоящая Политика конфиденциальности (далее — «Политика») определяет порядок обработки и защиты персональных данных пользователей мобильного приложения «Hair Colorist» (далее — «Приложение»), разработанного <strong>"[Укажите ваше имя или название компании]"</strong> (далее — «Разработчик» или «Мы»).</p>
-                    <p>Целью Политики является обеспечение защиты ваших прав и свобод при обработке ваших персональных данных, включая право на неприкосновенность частной жизни.</p>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-database"></i> 2. Какие данные мы обрабатываем</h2>
-                    <p>Приложение работает <strong>полностью автономно</strong> и не требует подключения к интернету для своей основной функции.</p>
-                    
-                    <div class="highlight">
-                        <p><strong>Данные, обрабатываемые на устройстве:</strong> Все операции по обработке фотографий (включая загруженные изображения, сделанные снимки и результаты виртуального окрашивания) выполняются исключительно в памяти вашего устройства и <strong>не передаются</strong> на наши или сторонние серверы.</p>
-                    </div>
-                    
-                    <ul class="legal-list">
-                        <li><strong>Технические данные:</strong> При первом запуске для аналитики работы функций приложения может анонимно собираться информация о типе устройства, версии операционной системы и выбранном языке интерфейса. Эти данные не позволяют идентифицировать личность.</li>
-                        <li><strong>Данные, которые мы НЕ собираем:</strong> Мы не собираем, не храним и не имеем доступа к вашим фотографиям, контактам, геолокации или любой другой личной информации.</li>
-                    </ul>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-bullseye"></i> 3. Цели обработки данных</h2>
-                    <p>Единственной целью обработки технических данных является анализ и улучшение стабильности работы Приложения.</p>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-user-check"></i> 4. Согласие и ваши права</h2>
-                    <p>Используя Приложение, вы подтверждаете, что ознакомились с условиями настоящей Политики и соглашаетесь с ними.</p>
-                    <p>Вы имеете право запросить информацию об обработке ваших данных, а также отозвать согласие, удалив Приложение со своего устройства.</p>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-lock"></i> 5. Безопасность</h2>
-                    <p>Мы принимаем все разумные меры для защиты информации, обрабатываемой Приложением. Поскольку ваши фотографии никогда не покидают ваше устройство, ответственность за их безопасность лежит на системе безопасности вашего смартфона.</p>
-                </div>
-                
-                <div class="notice-box">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <div>
-                        <p><strong>Важно:</strong> Разработчик оставляет за собой право вносить изменения в настоящую Политику. Актуальная версия всегда будет доступна по ссылке, указанной в AppGallery.</p>
-                    </div>
-                </div>
-                
-                <div class="contact-info">
-                    <h3><i class="fas fa-envelope"></i> Контактная информация</h3>
-                    <p>По всем вопросам, касающимся данной Политики или использования Приложения, вы можете связаться с нами:</p>
-                    <div class="email">[your-email@example.com]</div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- Страница лицензионного соглашения -->
-        <section id="license-page" class="page">
-            <div class="document">
-                <div class="doc-header">
-                    <h1>
-                        <i class="fas fa-file-contract"></i>
-                        Лицензионное соглашение с конечным пользователем
-                    </h1>
-                    <div class="doc-meta">
-                        <i class="far fa-calendar-alt"></i>
-                        <span id="current-date2">26 января 2026 г.</span>
-                    </div>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-file-signature"></i> 1. Предмет соглашения</h2>
-                    <p>Настоящее Лицензионное соглашение (далее — «Соглашение») предоставляет вам ограниченную, непередаваемую, отзывную, неисключительную лицензию на использование бесплатного мобильного приложения «Hair Colorist» (далее — «Приложение») на вашем личном устройстве.</p>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-clipboard-check"></i> 2. Условия использования</h2>
-                    <ul class="legal-list">
-                        <li>Вы можете использовать Приложение только в законных целях.</li>
-                        <li>Вы не имеете права пытаться декомпилировать, модифицировать или создавать производные работы на основе исходного кода Приложения.</li>
-                        <li>Приложение предоставляется «как есть». Разработчик не гарантирует, что функции Приложения будут соответствовать всем вашим ожиданиям или работать бесперебойно.</li>
-                    </ul>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-copyright"></i> 3. Авторские права</h2>
-                    <p>Все права на Приложение, включая графический интерфейс, дизайн, код и логотип, являются интеллектуальной собственностью Разработчика <strong>"[Укажите ваше имя или название компании]"</strong> и защищены законами об авторском праве.</p>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-exclamation-triangle"></i> 4. Ограничение ответственности</h2>
-                    <p>Разработчик не несет ответственности за любые прямые или косвенные убытки, возникшие в результате использования или невозможности использования Приложения.</p>
-                    <p>Вы несете полную ответственность за контент (фотографии), который вы обрабатываете с помощью данного Приложения.</p>
-                </div>
-                
-                <div class="doc-section">
-                    <h2><i class="fas fa-gavel"></i> 5. Заключительные положения</h2>
-                    <p>Устанавливая и используя Приложение, вы подтверждаете, что полностью прочитали, поняли и соглашаетесь соблюдать условия данного Соглашения и <a href="#" class="page-link" data-page="privacy">Политики конфиденциальности</a>.</p>
-                    <p>Разработчик оставляет за собой право изменять условия данного Соглашения. Продолжение использования Приложения после внесения изменений означает ваше согласие с ними.</p>
-                </div>
-                
-                <div class="acceptance-box">
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="accept-license">
-                        <label for="accept-license">Я подтверждаю, что прочитал(а) и соглашаюсь с условиями Лицензионного соглашения и Политики конфиденциальности.</label>
-                    </div>
-                    <button class="accept-btn" id="confirm-accept" disabled>Принять условия</button>
-                </div>
-            </div>
-        </section>
+            </section>
+        </main>
         
         <!-- Подвал -->
         <footer class="footer">
-            <div class="footer-links">
-                <a href="#" class="page-link" data-page="privacy">
-                    <i class="fas fa-shield-alt"></i>
-                    Политика конфиденциальности
-                </a>
-                <a href="#" class="page-link" data-page="license">
-                    <i class="fas fa-file-contract"></i>
-                    Лицензионное соглашение
-                </a>
-            </div>
-            <p class="copyright">
-                © <span id="current-year">2026</span> Hair Colorist. Все права защищены.
-            </p>
+            <p>© <span id="current-year">2026</span> Hair Colorist. Все права защищены.</p>
+            <p style="margin-top: 5px;">Чигракова Анастасия Сергеевна</p>
         </footer>
     </div>
     
-    <!-- JavaScript -->
     <script>
-        // Установка текущей даты и года
+        // Установка текущей даты
         function setCurrentDate() {
             const now = new Date();
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const dateStr = now.toLocaleDateString('ru-RU', options);
+            const months = [
+                'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+                'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'
+            ];
+            const day = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
             
-            // Устанавливаем дату во всех элементах
-            document.querySelectorAll('#current-date, #current-date2').forEach(el => {
-                el.textContent = dateStr;
-            });
-            
-            // Устанавливаем текущий год
-            document.getElementById('current-year').textContent = now.getFullYear();
+            const dateString = `${day} ${month} ${year} г.`;
+            document.getElementById('current-date').textContent = dateString;
+            document.getElementById('current-year').textContent = year;
         }
         
-        // Переключение между страницами
-        function setupPageSwitching() {
-            const pageBtns = document.querySelectorAll('.page-btn');
-            const pageLinks = document.querySelectorAll('.page-link');
-            const pages = document.querySelectorAll('.page');
-            
-            // Функция для переключения страницы
-            function switchPage(pageId) {
-                // Скрыть все страницы
-                pages.forEach(page => {
-                    page.classList.remove('active');
-                });
-                
-                // Показать выбранную страницу
-                document.getElementById(`${pageId}-page`).classList.add('active');
-                
-                // Обновить активную кнопку
-                pageBtns.forEach(btn => {
-                    if (btn.id === `btn-${pageId}`) {
-                        btn.classList.add('active');
-                    } else {
-                        btn.classList.remove('active');
-                    }
-                });
-                
-                // Прокрутить к началу страницы
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            
-            // Обработчики для кнопок переключения
-            pageBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const pageId = this.id.replace('btn-', '');
-                    switchPage(pageId);
-                });
-            });
-            
-            // Обработчики для ссылок в футере и документах
-            pageLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const pageId = this.getAttribute('data-page');
-                    switchPage(pageId);
-                });
-            });
-        }
-        
-        // Настройка темы (светлая/темная)
+        // Переключение темы
         function setupTheme() {
             const themeToggle = document.getElementById('theme-toggle');
             const themeIcon = document.getElementById('theme-icon');
             const body = document.body;
             
-            // Проверить сохраненную тему или системные настройки
+            // Проверяем сохранённую тему
             const savedTheme = localStorage.getItem('theme');
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
             
-            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            if (savedTheme === 'dark') {
                 body.classList.add('dark-theme');
                 themeIcon.className = 'fas fa-sun';
             }
             
-            // Переключение темы
+            // Обработчик клика
             themeToggle.addEventListener('click', function() {
                 body.classList.toggle('dark-theme');
                 
@@ -745,67 +526,10 @@
             });
         }
         
-        // Обработчик чекбокса принятия лицензии
-        function setupLicenseAcceptance() {
-            const acceptCheckbox = document.getElementById('accept-license');
-            const acceptButton = document.getElementById('confirm-accept');
-            
-            if (acceptCheckbox && acceptButton) {
-                acceptCheckbox.addEventListener('change', function() {
-                    acceptButton.disabled = !this.checked;
-                });
-                
-                acceptButton.addEventListener('click', function() {
-                    // Сохраняем согласие в localStorage
-                    localStorage.setItem('licenseAccepted', 'true');
-                    
-                    // Показываем сообщение
-                    alert('Спасибо! Вы приняли условия лицензионного соглашения.');
-                    
-                    // Переходим на главную страницу
-                    switchPage('privacy');
-                });
-                
-                // Проверить, было ли уже принято соглашение
-                if (localStorage.getItem('licenseAccepted') === 'true') {
-                    acceptCheckbox.checked = true;
-                    acceptButton.disabled = false;
-                }
-            }
-        }
-        
-        // Вспомогательная функция для переключения страниц
-        function switchPage(pageId) {
-            const pageBtns = document.querySelectorAll('.page-btn');
-            const pages = document.querySelectorAll('.page');
-            
-            // Скрыть все страницы
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Показать выбранную страницу
-            document.getElementById(`${pageId}-page`).classList.add('active');
-            
-            // Обновить активную кнопку
-            pageBtns.forEach(btn => {
-                if (btn.id === `btn-${pageId}`) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-            
-            // Прокрутить к началу страницы
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Инициализация при загрузке страницы
+        // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
             setCurrentDate();
-            setupPageSwitching();
             setupTheme();
-            setupLicenseAcceptance();
         });
     </script>
 </body>
