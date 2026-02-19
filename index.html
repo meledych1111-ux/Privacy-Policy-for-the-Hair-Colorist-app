@@ -104,6 +104,50 @@
             margin-top: 5px;
         }
         
+        /* ===== ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ ===== */
+        .language-switcher {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+        }
+        
+        .lang-btn {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .lang-btn i {
+            font-size: 16px;
+            color: var(--primary-color);
+        }
+        
+        .lang-btn:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-color: var(--primary-dark);
+            color: white;
+        }
+        
+        .lang-btn.active i {
+            color: white;
+        }
+        
         /* ===== ОСНОВНОЙ ДОКУМЕНТ ===== */
         .privacy-card {
             background: var(--card-bg);
@@ -286,6 +330,15 @@
                 width: 50px;
                 height: 50px;
             }
+            
+            .language-switcher {
+                gap: 10px;
+            }
+            
+            .lang-btn {
+                padding: 8px 18px;
+                font-size: 14px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -299,6 +352,17 @@
             
             .section h2 {
                 font-size: 18px;
+            }
+            
+            .language-switcher {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .lang-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
             }
         }
     </style>
@@ -318,9 +382,27 @@
                 </div>
                 <h1 class="logo-text">Hair Colorist</h1>
             </div>
-            <div class="last-updated">
+            
+            <!-- Переключатель языков -->
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="ru">
+                    <i class="fas fa-language"></i>
+                    Русский
+                </button>
+                <button class="lang-btn" data-lang="en">
+                    <i class="fas fa-language"></i>
+                    English
+                </button>
+                <button class="lang-btn" data-lang="zh">
+                    <i class="fas fa-language"></i>
+                    中文
+                </button>
+            </div>
+            
+            <div class="last-updated" id="last-updated">
                 <i class="far fa-calendar-alt"></i>
-                <span>Дата последнего обновления: <span id="current-date">19 февраля 2026 г.</span></span>
+                <span data-lang-ru="Дата последнего обновления:" data-lang-en="Last updated:" data-lang-zh="最后更新:">Дата последнего обновления:</span>
+                <span id="current-date">19 февраля 2026 г.</span>
             </div>
         </header>
         
@@ -328,144 +410,144 @@
         <main class="privacy-card">
             <h1 class="doc-title">
                 <i class="fas fa-shield-alt"></i>
-                ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ
+                <span data-lang-ru="ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ" data-lang-en="PRIVACY POLICY" data-lang-zh="隐私政策">ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</span>
             </h1>
             
             <!-- 1. ОБЩИЕ ПОЛОЖЕНИЯ -->
             <section class="section">
-                <h2><i class="fas fa-info-circle"></i> 1. ОБЩИЕ ПОЛОЖЕНИЯ</h2>
-                <p>1.1. Настоящая Политика конфиденциальности («Политика») определяет порядок обработки и защиты персональных данных пользователей мобильного приложения «Hair Colorist» («Приложение»), разработанного Чиграковой Анастасией Сергеевной («Оператор»).</p>
-                <p>1.2. Оператор обязуется соблюдать конфиденциальность персональных данных Пользователя в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
-                <p>1.3. Используя Приложение, Пользователь выражает своё согласие с условиями настоящей Политики.</p>
+                <h2><i class="fas fa-info-circle"></i> <span data-lang-ru="1. ОБЩИЕ ПОЛОЖЕНИЯ" data-lang-en="1. GENERAL PROVISIONS" data-lang-zh="1. 总则">1. ОБЩИЕ ПОЛОЖЕНИЯ</span></h2>
+                <p data-lang-ru="1.1. Настоящая Политика конфиденциальности («Политика») определяет порядок обработки и защиты персональных данных пользователей мобильного приложения «Hair Colorist» («Приложение»), разработанного Чиграковой Анастасией Сергеевной («Оператор»)." data-lang-en="1.1. This Privacy Policy ('Policy') defines the procedure for processing and protecting personal data of users of the mobile application 'Hair Colorist' ('Application'), developed by Anastasia Chigrakova ('Operator')." data-lang-zh="1.1. 本隐私政策（'政策'）规定了由Anastasia Chigrakova（'运营商'）开发的移动应用程序'Hair Colorist'（'应用程序'）用户个人数据的处理和保护程序。">1.1. Настоящая Политика конфиденциальности («Политика») определяет порядок обработки и защиты персональных данных пользователей мобильного приложения «Hair Colorist» («Приложение»), разработанного Чиграковой Анастасией Сергеевной («Оператор»).</p>
+                <p data-lang-ru="1.2. Оператор обязуется соблюдать конфиденциальность персональных данных Пользователя в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных»." data-lang-en="1.2. The Operator undertakes to maintain the confidentiality of the User's personal data in accordance with Federal Law No. 152-FZ of July 27, 2006 'On Personal Data'." data-lang-zh="1.2. 运营商承诺根据2006年7月27日第152-FZ号联邦法律'关于个人数据'对用户的个人数据保密。">1.2. Оператор обязуется соблюдать конфиденциальность персональных данных Пользователя в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+                <p data-lang-ru="1.3. Используя Приложение, Пользователь выражает своё согласие с условиями настоящей Политики." data-lang-en="1.3. By using the Application, the User expresses their consent to the terms of this Policy." data-lang-zh="1.3. 使用应用程序即表示用户同意本政策的条款。">1.3. Используя Приложение, Пользователь выражает своё согласие с условиями настоящей Политики.</p>
             </section>
             
             <!-- 2. КАКИЕ ДАННЫЕ МЫ СОБИРАЕМ -->
             <section class="section">
-                <h2><i class="fas fa-database"></i> 2. КАКИЕ ДАННЫЕ МЫ СОБИРАЕМ</h2>
-                <p>2.1. Приложение «Hair Colorist» разработано с минимальным сбором данных. Мы собираем только ту информацию, которая необходима для функционирования Приложения:</p>
+                <h2><i class="fas fa-database"></i> <span data-lang-ru="2. КАКИЕ ДАННЫЕ МЫ СОБИРАЕМ" data-lang-en="2. WHAT DATA WE COLLECT" data-lang-zh="2. 我们收集哪些数据">2. КАКИЕ ДАННЫЕ МЫ СОБИРАЕМ</span></h2>
+                <p data-lang-ru="2.1. Приложение «Hair Colorist» разработано с минимальным сбором данных. Мы собираем только ту информацию, которая необходима для функционирования Приложения:" data-lang-en="2.1. The Hair Colorist application is designed with minimal data collection. We only collect information that is necessary for the Application to function:" data-lang-zh="2.1. Hair Colorist应用程序设计为最小化数据收集。我们只收集应用程序运行所必需的信息：">2.1. Приложение «Hair Colorist» разработано с минимальным сбором данных. Мы собираем только ту информацию, которая необходима для функционирования Приложения:</p>
                 
                 <ul class="data-list">
-                    <li><strong>Технические данные устройства:</strong>
+                    <li><strong data-lang-ru="Технические данные устройства:" data-lang-en="Device technical data:" data-lang-zh="设备技术数据：">Технические данные устройства:</strong>
                         <ul style="margin-top: 5px; margin-left: 20px;">
-                            <li>Тип и версия операционной системы</li>
-                            <li>Модель устройства</li>
-                            <li>Уникальный идентификатор устройства (IDFA/Android ID/AAID)</li>
-                            <li>Версия Приложения</li>
-                            <li>Язык и регион устройства</li>
+                            <li data-lang-ru="Тип и версия операционной системы" data-lang-en="Operating system type and version" data-lang-zh="操作系统类型和版本">Тип и версия операционной системы</li>
+                            <li data-lang-ru="Модель устройства" data-lang-en="Device model" data-lang-zh="设备型号">Модель устройства</li>
+                            <li data-lang-ru="Уникальный идентификатор устройства (IDFA/Android ID/AAID)" data-lang-en="Unique device identifier (IDFA/Android ID/AAID)" data-lang-zh="唯一设备标识符（IDFA/Android ID/AAID）">Уникальный идентификатор устройства (IDFA/Android ID/AAID)</li>
+                            <li data-lang-ru="Версия Приложения" data-lang-en="Application version" data-lang-zh="应用程序版本">Версия Приложения</li>
+                            <li data-lang-ru="Язык и регион устройства" data-lang-en="Device language and region" data-lang-zh="设备语言和区域">Язык и регион устройства</li>
                         </ul>
                     </li>
-                    <li style="margin-top: 15px;"><strong>Данные, вводимые пользователем для расчётов:</strong>
+                    <li style="margin-top: 15px;"><strong data-lang-ru="Данные, вводимые пользователем для расчётов:" data-lang-en="Data entered by the user for calculations:" data-lang-zh="用户输入用于计算的数据：">Данные, вводимые пользователем для расчётов:</strong>
                         <ul style="margin-top: 5px; margin-left: 20px;">
-                            <li>Тип волос (натуральные, окрашенные, седые и т.д.)</li>
-                            <li>Текущий и желаемый цвет волос</li>
-                            <li>Длина волос</li>
-                            <li>Процент седины</li>
-                            <li>Выбранный бренд краски (ESTEL и др.)</li>
-                            <li>Количество продукта (если указано)</li>
+                            <li data-lang-ru="Тип волос (натуральные, окрашенные, седые и т.д.)" data-lang-en="Hair type (natural, colored, gray, etc.)" data-lang-zh="头发类型（自然、染色、白发等）">Тип волос (натуральные, окрашенные, седые и т.д.)</li>
+                            <li data-lang-ru="Текущий и желаемый цвет волос" data-lang-en="Current and desired hair color" data-lang-zh="当前和期望的头发颜色">Текущий и желаемый цвет волос</li>
+                            <li data-lang-ru="Длина волос" data-lang-en="Hair length" data-lang-zh="头发长度">Длина волос</li>
+                            <li data-lang-ru="Процент седины" data-lang-en="Percentage of gray hair" data-lang-zh="白发百分比">Процент седины</li>
+                            <li data-lang-ru="Выбранный бренд краски (Estel и др.)" data-lang-en="Selected hair dye brand (Estel, etc.)" data-lang-zh="选择的染发剂品牌（Estel等）">Выбранный бренд краски (Estel и др.)</li>
+                            <li data-lang-ru="Количество продукта (если указано)" data-lang-en="Amount of product (if specified)" data-lang-zh="产品数量（如果指定）">Количество продукта (если указано)</li>
                         </ul>
                     </li>
-                    <li style="margin-top: 15px;"><strong>Данные об использовании (аналитика и реклама):</strong>
+                    <li style="margin-top: 15px;"><strong data-lang-ru="Данные об использовании (аналитика и реклама):" data-lang-en="Usage data (analytics and advertising):" data-lang-zh="使用数据（分析和广告）：">Данные об использовании (аналитика и реклама):</strong>
                         <ul style="margin-top: 5px; margin-left: 20px;">
-                            <li>Частота использования различных функций</li>
-                            <li>Продолжительность сессий</li>
-                            <li>Информация об ошибках и сбоях (логи)</li>
-                            <li>Данные для таргетированной рекламы (без персональной идентификации)</li>
+                            <li data-lang-ru="Частота использования различных функций" data-lang-en="Frequency of use of various functions" data-lang-zh="各种功能的使用频率">Частота использования различных функций</li>
+                            <li data-lang-ru="Продолжительность сессий" data-lang-en="Session duration" data-lang-zh="会话时长">Продолжительность сессий</li>
+                            <li data-lang-ru="Информация об ошибках и сбоях (логи)" data-lang-en="Information about errors and crashes (logs)" data-lang-zh="错误和崩溃信息（日志）">Информация об ошибках и сбоях (логи)</li>
+                            <li data-lang-ru="Данные для таргетированной рекламы (без персональной идентификации)" data-lang-en="Data for targeted advertising (without personal identification)" data-lang-zh="定向广告数据（无个人身份识别）">Данные для таргетированной рекламы (без персональной идентификации)</li>
                         </ul>
                     </li>
                 </ul>
                 
                 <div class="highlight-box">
-                    <p><strong>2.2. Приложение НЕ собирает и НЕ передаёт:</strong> Фотографии и изображения пользователей, геолокационные данные, контактную информацию, данные платёжных карт, данные из адресной книги или социальных сетей (за исключением случаев добровольной авторизации через ВКонтакте).</p>
+                    <p><strong data-lang-ru="2.2. Приложение НЕ собирает и НЕ передаёт:" data-lang-en="2.2. The application does NOT collect or transfer:" data-lang-zh="2.2. 应用程序不收集也不传输：">2.2. Приложение НЕ собирает и НЕ передаёт:</strong> <span data-lang-ru="Фотографии и изображения пользователей, геолокационные данные, контактную информацию, данные платёжных карт, данные из адресной книги или социальных сетей (за исключением случаев добровольной авторизации через ВКонтакте)." data-lang-en="Photos and images of users, geolocation data, contact information, payment card data, data from the address book or social networks (except in cases of voluntary authorization via VKontakte)." data-lang-zh="用户的照片和图像、地理位置数据、联系信息、支付卡数据、地址簿或社交网络数据（通过VKontakte自愿授权的情况除外）。">Фотографии и изображения пользователей, геолокационные данные, контактную информацию, данные платёжных карт, данные из адресной книги или социальных сетей (за исключением случаев добровольной авторизации через ВКонтакте).</span></p>
                 </div>
             </section>
             
             <!-- 3. ЦЕЛИ СБОРА ДАННЫХ -->
             <section class="section">
-                <h2><i class="fas fa-bullseye"></i> 3. ЦЕЛИ СБОРА ДАННЫХ</h2>
-                <p>3.1. Собранные данные используются исключительно для следующих целей:</p>
+                <h2><i class="fas fa-bullseye"></i> <span data-lang-ru="3. ЦЕЛИ СБОРА ДАННЫХ" data-lang-en="3. PURPOSES OF DATA COLLECTION" data-lang-zh="3. 数据收集目的">3. ЦЕЛИ СБОРА ДАННЫХ</span></h2>
+                <p data-lang-ru="3.1. Собранные данные используются исключительно для следующих целей:" data-lang-en="3.1. The collected data is used exclusively for the following purposes:" data-lang-zh="3.1. 收集的数据仅用于以下目的：">3.1. Собранные данные используются исключительно для следующих целей:</p>
                 <ul>
-                    <li>Обеспечения корректной работы Приложения и выполнения расчётов;</li>
-                    <li>Улучшения функциональности и пользовательского опыта;</li>
-                    <li>Анализа использования Приложения через сервисы аналитики;</li>
-                    <li>Показа релевантной рекламы для монетизации бесплатной версии;</li>
-                    <li>Выявления и устранения ошибок, технических проблем;</li>
-                    <li>Соблюдения требований действующего законодательства РФ.</li>
+                    <li data-lang-ru="Обеспечения корректной работы Приложения и выполнения расчётов;" data-lang-en="Ensuring the correct operation of the Application and performing calculations;" data-lang-zh="确保应用程序正常运行和执行计算；">Обеспечения корректной работы Приложения и выполнения расчётов;</li>
+                    <li data-lang-ru="Улучшения функциональности и пользовательского опыта;" data-lang-en="Improving functionality and user experience;" data-lang-zh="改进功能和用户体验；">Улучшения функциональности и пользовательского опыта;</li>
+                    <li data-lang-ru="Анализа использования Приложения через сервисы аналитики;" data-lang-en="Analyzing the use of the Application through analytics services;" data-lang-zh="通过分析服务分析应用程序的使用情况；">Анализа использования Приложения через сервисы аналитики;</li>
+                    <li data-lang-ru="Показа релевантной рекламы для монетизации бесплатной версии;" data-lang-en="Showing relevant advertising to monetize the free version;" data-lang-zh="展示相关广告以实现免费版本的盈利；">Показа релевантной рекламы для монетизации бесплатной версии;</li>
+                    <li data-lang-ru="Выявления и устранения ошибок, технических проблем;" data-lang-en="Identifying and fixing errors and technical problems;" data-lang-zh="识别和修复错误及技术问题；">Выявления и устранения ошибок, технических проблем;</li>
+                    <li data-lang-ru="Соблюдения требований действующего законодательства РФ." data-lang-en="Compliance with the requirements of the current legislation of the Russian Federation." data-lang-zh="遵守俄罗斯联邦现行法律的要求。">Соблюдения требований действующего законодательства РФ.</li>
                 </ul>
             </section>
             
             <!-- 4. ОБРАБОТКА И ХРАНЕНИЕ ДАННЫХ -->
             <section class="section">
-                <h2><i class="fas fa-server"></i> 4. ОБРАБОТКА И ХРАНЕНИЕ ДАННЫХ</h2>
-                <p>4.1. Все расчёты производятся локально на устройстве Пользователя. Введённые данные для расчётов не передаются на серверы Оператора и не покидают устройство.</p>
-                <p>4.2. Для сбора аналитики и показа рекламы могут использоваться сторонние сервисы:</p>
+                <h2><i class="fas fa-server"></i> <span data-lang-ru="4. ОБРАБОТКА И ХРАНЕНИЕ ДАННЫХ" data-lang-en="4. DATA PROCESSING AND STORAGE" data-lang-zh="4. 数据处理和存储">4. ОБРАБОТКА И ХРАНЕНИЕ ДАННЫХ</span></h2>
+                <p data-lang-ru="4.1. Все расчёты производятся локально на устройстве Пользователя. Введённые данные для расчётов не передаются на серверы Оператора и не покидают устройство." data-lang-en="4.1. All calculations are performed locally on the User's device. The entered data for calculations is not transmitted to the Operator's servers and does not leave the device." data-lang-zh="4.1. 所有计算均在用户设备上本地进行。输入的计算数据不会传输到运营商的服务器，也不会离开设备。">4.1. Все расчёты производятся локально на устройстве Пользователя. Введённые данные для расчётов не передаются на серверы Оператора и не покидают устройство.</p>
+                <p data-lang-ru="4.2. Для сбора аналитики и показа рекламы могут использоваться сторонние сервисы:" data-lang-en="4.2. Third-party services may be used to collect analytics and display advertising:" data-lang-zh="4.2. 可能使用第三方服务收集分析和展示广告：">4.2. Для сбора аналитики и показа рекламы могут использоваться сторонние сервисы:</p>
                 <ul>
-                    <li>Яндекс.Метрика — для анализа использования Приложения;</li>
-                    <li>ВКонтакте (VK SDK) — для авторизации по желанию пользователя и аналитики;</li>
-                    <li>Huawei Mobile Services (HMS Core) — для устройств без сервисов Google, включая Huawei Ads Kit, Huawei Analytics Kit, Huawei In-App Purchases;</li>
-                    <li>Данные рекламных сетей — в соответствии с политиками соответствующих платформ.</li>
+                    <li data-lang-ru="Яндекс.Метрика — для анализа использования Приложения;" data-lang-en="Yandex.Metrica - to analyze the use of the Application;" data-lang-zh="Yandex.Metrica - 分析应用程序的使用情况；">Яндекс.Метрика — для анализа использования Приложения;</li>
+                    <li data-lang-ru="ВКонтакте (VK SDK) — для авторизации по желанию пользователя и аналитики;" data-lang-en="VKontakte (VK SDK) - for user authorization (optional) and analytics;" data-lang-zh="VKontakte（VK SDK）- 用于用户授权（可选）和分析；">ВКонтакте (VK SDK) — для авторизации по желанию пользователя и аналитики;</li>
+                    <li data-lang-ru="Huawei Mobile Services (HMS Core) — для устройств без сервисов Google, включая Huawei Ads Kit, Huawei Analytics Kit, Huawei In-App Purchases;" data-lang-en="Huawei Mobile Services (HMS Core) - for devices without Google services, including Huawei Ads Kit, Huawei Analytics Kit, Huawei In-App Purchases;" data-lang-zh="华为移动服务（HMS Core）- 适用于没有Google服务的设备，包括华为广告套件、华为分析套件、华为应用内购买；">Huawei Mobile Services (HMS Core) — для устройств без сервисов Google, включая Huawei Ads Kit, Huawei Analytics Kit, Huawei In-App Purchases;</li>
+                    <li data-lang-ru="Данные рекламных сетей — в соответствии с политиками соответствующих платформ." data-lang-en="Data from advertising networks - in accordance with the policies of the respective platforms." data-lang-zh="广告网络数据 - 根据相应平台的政策。">Данные рекламных сетей — в соответствии с политиками соответствующих платформ.</li>
                 </ul>
-                <p>4.4. Оператор принимает необходимые организационные и технические меры для защиты данных от неправомерного доступа, уничтожения, изменения, блокирования, копирования и распространения.</p>
+                <p data-lang-ru="4.4. Оператор принимает необходимые организационные и технические меры для защиты данных от неправомерного доступа, уничтожения, изменения, блокирования, копирования и распространения." data-lang-en="4.4. The Operator takes necessary organizational and technical measures to protect data from unauthorized access, destruction, modification, blocking, copying, and distribution." data-lang-zh="4.4. 运营商采取必要的组织和技术措施，保护数据免遭未经授权的访问、破坏、修改、阻止、复制和分发。">4.4. Оператор принимает необходимые организационные и технические меры для защиты данных от неправомерного доступа, уничтожения, изменения, блокирования, копирования и распространения.</p>
             </section>
             
             <!-- 5. ПЕРЕДАЧА ДАННЫХ ТРЕТЬИМ ЛИЦАМ -->
             <section class="section">
-                <h2><i class="fas fa-share-alt"></i> 5. ПЕРЕДАЧА ДАННЫХ ТРЕТЬИМ ЛИЦАМ</h2>
-                <p>5.1. Оператор не продаёт, не обменивает и не передаёт персональные данные Пользователей третьим лицам, за исключением:</p>
+                <h2><i class="fas fa-share-alt"></i> <span data-lang-ru="5. ПЕРЕДАЧА ДАННЫХ ТРЕТЬИМ ЛИЦАМ" data-lang-en="5. TRANSFER OF DATA TO THIRD PARTIES" data-lang-zh="5. 向第三方传输数据">5. ПЕРЕДАЧА ДАННЫХ ТРЕТЬИМ ЛИЦАМ</span></h2>
+                <p data-lang-ru="5.1. Оператор не продаёт, не обменивает и не передаёт персональные данные Пользователей третьим лицам, за исключением:" data-lang-en="5.1. The Operator does not sell, exchange, or transfer Users' personal data to third parties, except:" data-lang-zh="5.1. 运营商不出售、交换或向第三方传输用户的个人数据，除非：">5.1. Оператор не продаёт, не обменивает и не передаёт персональные данные Пользователей третьим лицам, за исключением:</p>
                 <ul>
-                    <li>Указанных в п. 4.2 сервисов аналитики и рекламы;</li>
-                    <li>Уполномоченных государственных органов по их законному требованию;</li>
-                    <li>Правопреемников в случае реорганизации или продажи бизнеса (с обязательным уведомлением пользователей).</li>
+                    <li data-lang-ru="Указанных в п. 4.2 сервисов аналитики и рекламы;" data-lang-en="The analytics and advertising services specified in clause 4.2;" data-lang-zh="第4.2条中指定的分析和广告服务；">Указанных в п. 4.2 сервисов аналитики и рекламы;</li>
+                    <li data-lang-ru="Уполномоченных государственных органов по их законному требованию;" data-lang-en="Authorized government bodies upon their lawful request;" data-lang-zh="根据合法要求授权的政府机构；">Уполномоченных государственных органов по их законному требованию;</li>
+                    <li data-lang-ru="Правопреемников в случае реорганизации или продажи бизнеса (с обязательным уведомлением пользователей)." data-lang-en="Legal successors in case of reorganization or sale of the business (with mandatory notification of users)." data-lang-zh="在重组或出售业务时的合法继承人（需通知用户）。">Правопреемников в случае реорганизации или продажи бизнеса (с обязательным уведомлением пользователей).</li>
                 </ul>
-                <p>5.2. Все третьи лица, получающие данные, обязуются соблюдать конфиденциальность. Передаваемые данные используются исключительно в целях, указанных в настоящей Политике.</p>
-                <p>5.3. Рекламные сети могут использовать данные для таргетирования рекламы, но не получают прямую персональную идентификацию (имя, email, телефон).</p>
+                <p data-lang-ru="5.2. Все третьи лица, получающие данные, обязуются соблюдать конфиденциальность. Передаваемые данные используются исключительно в целях, указанных в настоящей Политике." data-lang-en="5.2. All third parties receiving the data undertake to maintain confidentiality. The transmitted data is used exclusively for the purposes specified in this Policy." data-lang-zh="5.2. 所有接收数据的第三方承诺保密。传输的数据仅用于本政策规定的目的。">5.2. Все третьи лица, получающие данные, обязуются соблюдать конфиденциальность. Передаваемые данные используются исключительно в целях, указанных в настоящей Политике.</p>
+                <p data-lang-ru="5.3. Рекламные сети могут использовать данные для таргетирования рекламы, но не получают прямую персональную идентификацию (имя, email, телефон)." data-lang-en="5.3. Advertising networks may use data for ad targeting but do not receive direct personal identification (name, email, phone)." data-lang-zh="5.3. 广告网络可能使用数据进行广告定向，但不获取直接的个人身份信息（姓名、电子邮件、电话）。">5.3. Рекламные сети могут использовать данные для таргетирования рекламы, но не получают прямую персональную идентификацию (имя, email, телефон).</p>
             </section>
             
             <!-- 6. ПРАВА ПОЛЬЗОВАТЕЛЯ -->
             <section class="section">
-                <h2><i class="fas fa-user-check"></i> 6. ПРАВА ПОЛЬЗОВАТЕЛЯ</h2>
-                <p>6.1. В соответствии с законодательством РФ Пользователь имеет право:</p>
+                <h2><i class="fas fa-user-check"></i> <span data-lang-ru="6. ПРАВА ПОЛЬЗОВАТЕЛЯ" data-lang-en="6. USER RIGHTS" data-lang-zh="6. 用户权利">6. ПРАВА ПОЛЬЗОВАТЕЛЯ</span></h2>
+                <p data-lang-ru="6.1. В соответствии с законодательством РФ Пользователь имеет право:" data-lang-en="6.1. In accordance with the legislation of the Russian Federation, the User has the right:" data-lang-zh="6.1. 根据俄罗斯联邦法律，用户有权：">6.1. В соответствии с законодательством РФ Пользователь имеет право:</p>
                 <ul>
-                    <li>На получение информации о наличии и содержании своих персональных данных;</li>
-                    <li>На уточнение, блокирование или уничтожение своих данных, если они неполные, устаревшие, недостоверные или незаконно обработаны;</li>
-                    <li>На отзыв согласия на обработку персональных данных;</li>
-                    <li>На защиту своих прав и законных интересов, в том числе в судебном порядке.</li>
+                    <li data-lang-ru="На получение информации о наличии и содержании своих персональных данных;" data-lang-en="To receive information about the availability and content of their personal data;" data-lang-zh="获取有关其个人数据的存在和内容的信息；">На получение информации о наличии и содержании своих персональных данных;</li>
+                    <li data-lang-ru="На уточнение, блокирование или уничтожение своих данных, если они неполные, устаревшие, недостоверные или незаконно обработаны;" data-lang-en="To clarify, block or destroy their data if it is incomplete, outdated, inaccurate, or illegally processed;" data-lang-zh="如果数据不完整、过时、不准确或非法处理，要求澄清、阻止或销毁其数据；">На уточнение, блокирование или уничтожение своих данных, если они неполные, устаревшие, недостоверные или незаконно обработаны;</li>
+                    <li data-lang-ru="На отзыв согласия на обработку персональных данных;" data-lang-en="To withdraw consent to the processing of personal data;" data-lang-zh="撤回对个人数据处理的同意；">На отзыв согласия на обработку персональных данных;</li>
+                    <li data-lang-ru="На защиту своих прав и законных интересов, в том числе в судебном порядке." data-lang-en="To protect their rights and legitimate interests, including in court." data-lang-zh="保护自己的权利和合法利益，包括通过司法程序。">На защиту своих прав и законных интересов, в том числе в судебном порядке.</li>
                 </ul>
-                <p>6.2. Для реализации своих прав Пользователь может обратиться к Оператору: meledy11@yandex.ru</p>
+                <p data-lang-ru="6.2. Для реализации своих прав Пользователь может обратиться к Оператору: meledy11@yandex.ru" data-lang-en="6.2. To exercise their rights, the User can contact the Operator: meledy11@yandex.ru" data-lang-zh="6.2. 为行使权利，用户可联系运营商：meledy11@yandex.ru">6.2. Для реализации своих прав Пользователь может обратиться к Оператору: meledy11@yandex.ru</p>
             </section>
             
             <!-- 7. ИСПОЛЬЗОВАНИЕ СЕРВИСОВ ТРЕТЬИХ ЛИЦ -->
             <section class="section">
-                <h2><i class="fas fa-plug"></i> 7. ИСПОЛЬЗОВАНИЕ СЕРВИСОВ ТРЕТЬИХ ЛИЦ</h2>
-                <p>7.1. Приложение интегрирует следующие сервисы третьих лиц:</p>
+                <h2><i class="fas fa-plug"></i> <span data-lang-ru="7. ИСПОЛЬЗОВАНИЕ СЕРВИСОВ ТРЕТЬИХ ЛИЦ" data-lang-en="7. USE OF THIRD-PARTY SERVICES" data-lang-zh="7. 第三方服务的使用">7. ИСПОЛЬЗОВАНИЕ СЕРВИСОВ ТРЕТЬИХ ЛИЦ</span></h2>
+                <p data-lang-ru="7.1. Приложение интегрирует следующие сервисы третьих лиц:" data-lang-en="7.1. The Application integrates the following third-party services:" data-lang-zh="7.1. 应用程序集成了以下第三方服务：">7.1. Приложение интегрирует следующие сервисы третьих лиц:</p>
                 <ul>
-                    <li>Яндекс.Метрика (аналитика)</li>
-                    <li>ВКонтакте (авторизация и аналитика)</li>
-                    <li>Huawei Ads Kit (реклама для устройств Huawei)</li>
-                    <li>Другие рекламные сети (включая китайские платформы) для устройств.</li>
+                    <li data-lang-ru="Яндекс.Метрика (аналитика)" data-lang-en="Yandex.Metrica (analytics)" data-lang-zh="Yandex.Metrica（分析）">Яндекс.Метрика (аналитика)</li>
+                    <li data-lang-ru="ВКонтакте (авторизация и аналитика)" data-lang-en="VKontakte (authorization and analytics)" data-lang-zh="VKontakte（授权和分析）">ВКонтакте (авторизация и аналитика)</li>
+                    <li data-lang-ru="Huawei Ads Kit (реклама для устройств Huawei)" data-lang-en="Huawei Ads Kit (advertising for Huawei devices)" data-lang-zh="华为广告套件（华为设备广告）">Huawei Ads Kit (реклама для устройств Huawei)</li>
+                    <li data-lang-ru="Другие рекламные сети (включая китайские платформы) для устройств." data-lang-en="Other advertising networks (including Chinese platforms) for devices." data-lang-zh="其他广告网络（包括中国平台）用于设备。">Другие рекламные сети (включая китайские платформы) для устройств.</li>
                 </ul>
-                <p>7.2. Использование этих сервисов регулируется их собственными политиками конфиденциальности. Оператор не несёт ответственности за политики конфиденциальности и практики сторонних сервисов.</p>
+                <p data-lang-ru="7.2. Использование этих сервисов регулируется их собственными политиками конфиденциальности. Оператор не несёт ответственности за политики конфиденциальности и практики сторонних сервисов." data-lang-en="7.2. The use of these services is governed by their own privacy policies. The Operator is not responsible for the privacy policies and practices of third-party services." data-lang-zh="7.2. 这些服务的使用受其自身隐私政策的约束。运营商不对第三方服务的隐私政策和做法负责。">7.2. Использование этих сервисов регулируется их собственными политиками конфиденциальности. Оператор не несёт ответственности за политики конфиденциальности и практики сторонних сервисов.</p>
             </section>
             
             <!-- 8. ДЕТИ -->
             <section class="section">
-                <h2><i class="fas fa-child"></i> 8. ДЕТИ</h2>
-                <p>Приложение не предназначено для детей младше 16 лет. Мы сознательно не собираем персональные данные детей.</p>
+                <h2><i class="fas fa-child"></i> <span data-lang-ru="8. ДЕТИ" data-lang-en="8. CHILDREN" data-lang-zh="8. 儿童">8. ДЕТИ</span></h2>
+                <p data-lang-ru="Приложение не предназначено для детей младше 16 лет. Мы сознательно не собираем персональные данные детей." data-lang-en="The Application is not intended for children under 16 years of age. We do not knowingly collect personal data from children." data-lang-zh="该应用程序不适用于16岁以下的儿童。我们不会故意收集儿童的个人数据。">Приложение не предназначено для детей младше 16 лет. Мы сознательно не собираем персональные данные детей.</p>
             </section>
             
             <!-- 9. ИЗМЕНЕНИЯ В ПОЛИТИКЕ -->
             <section class="section">
-                <h2><i class="fas fa-edit"></i> 9. ИЗМЕНЕНИЯ В ПОЛИТИКЕ КОНФИДЕНЦИАЛЬНОСТИ</h2>
-                <p>9.1. Оператор оставляет за собой право вносить изменения в настоящую Политику. Новая редакция вступает в силу с момента её размещения в Приложении.</p>
-                <p>9.2. Продолжая использовать Приложение после внесения изменений, Пользователь подтверждает своё согласие с новой редакцией Политики.</p>
+                <h2><i class="fas fa-edit"></i> <span data-lang-ru="9. ИЗМЕНЕНИЯ В ПОЛИТИКЕ КОНФИДЕНЦИАЛЬНОСТИ" data-lang-en="9. CHANGES TO THE PRIVACY POLICY" data-lang-zh="9. 隐私政策的变更">9. ИЗМЕНЕНИЯ В ПОЛИТИКЕ КОНФИДЕНЦИАЛЬНОСТИ</span></h2>
+                <p data-lang-ru="9.1. Оператор оставляет за собой право вносить изменения в настоящую Политику. Новая редакция вступает в силу с момента её размещения в Приложении." data-lang-en="9.1. The Operator reserves the right to make changes to this Policy. The new version comes into force from the moment it is posted in the Application." data-lang-zh="9.1. 运营商保留对本政策进行更改的权利。新版本自发布在应用程序之时起生效。">9.1. Оператор оставляет за собой право вносить изменения в настоящую Политику. Новая редакция вступает в силу с момента её размещения в Приложении.</p>
+                <p data-lang-ru="9.2. Продолжая использовать Приложение после внесения изменений, Пользователь подтверждает своё согласие с новой редакцией Политики." data-lang-en="9.2. By continuing to use the Application after changes are made, the User confirms their consent to the new version of the Policy." data-lang-zh="9.2. 在变更后继续使用应用程序，即表示用户同意新版本的政策。">9.2. Продолжая использовать Приложение после внесения изменений, Пользователь подтверждает своё согласие с новой редакцией Политики.</p>
             </section>
             
             <!-- 10. КОНТАКТНАЯ ИНФОРМАЦИЯ -->
             <section class="section">
-                <h2><i class="fas fa-address-card"></i> 10. КОНТАКТНАЯ ИНФОРМАЦИЯ</h2>
-                <p>10.1. По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться к Оператору:</p>
+                <h2><i class="fas fa-address-card"></i> <span data-lang-ru="10. КОНТАКТНАЯ ИНФОРМАЦИЯ" data-lang-en="10. CONTACT INFORMATION" data-lang-zh="10. 联系信息">10. КОНТАКТНАЯ ИНФОРМАЦИЯ</span></h2>
+                <p data-lang-ru="10.1. По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться к Оператору:" data-lang-en="10.1. For all questions related to the processing of personal data, you can contact the Operator:" data-lang-zh="10.1. 如有任何与个人数据处理相关的问题，您可以联系运营商：">10.1. По всем вопросам, связанным с обработкой персональных данных, вы можете обратиться к Оператору:</p>
                 
                 <div class="contact-block">
-                    <h3><i class="fas fa-envelope"></i> Контакты для связи</h3>
+                    <h3><i class="fas fa-envelope"></i> <span data-lang-ru="Контакты для связи" data-lang-en="Contact information" data-lang-zh="联系信息">Контакты для связи</span></h3>
                     <div class="contact-email">
                         <i class="far fa-envelope"></i>
                         meledy11@yandex.ru
@@ -476,8 +558,8 @@
         
         <!-- Подвал -->
         <footer class="footer">
-            <p>© <span id="current-year">2026</span> Hair Colorist. Все права защищены.</p>
-            <p style="margin-top: 5px;">Чигракова Анастасия Сергеевна</p>
+            <p>© <span id="current-year">2026</span> Hair Colorist. <span data-lang-ru="Все права защищены." data-lang-en="All rights reserved." data-lang-zh="保留所有权利。">Все права защищены.</span></p>
+            <p style="margin-top: 5px;" data-lang-ru="Чигракова Анастасия Сергеевна" data-lang-en="Anastasia Chigrakova" data-lang-zh="Anastasia Chigrakova">Чигракова Анастасия Сергеевна</p>
         </footer>
     </div>
     
@@ -526,10 +608,56 @@
             });
         }
         
+        // Переключение языков
+        function setupLanguageSwitcher() {
+            const langButtons = document.querySelectorAll('.lang-btn');
+            const translatableElements = document.querySelectorAll('[data-lang-ru]');
+            
+            // Функция переключения языка
+            function switchLanguage(lang) {
+                // Обновляем активную кнопку
+                langButtons.forEach(btn => {
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // Обновляем тексты
+                translatableElements.forEach(element => {
+                    const translation = element.getAttribute(`data-lang-${lang}`);
+                    if (translation) {
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = translation;
+                        } else {
+                            element.textContent = translation;
+                        }
+                    }
+                });
+                
+                // Сохраняем выбранный язык
+                localStorage.setItem('preferredLanguage', lang);
+            }
+            
+            // Добавляем обработчики на кнопки
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.dataset.lang;
+                    switchLanguage(lang);
+                });
+            });
+            
+            // Загружаем сохранённый язык или используем русский по умолчанию
+            const savedLanguage = localStorage.getItem('preferredLanguage') || 'ru';
+            switchLanguage(savedLanguage);
+        }
+        
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
             setCurrentDate();
             setupTheme();
+            setupLanguageSwitcher();
         });
     </script>
 </body>
